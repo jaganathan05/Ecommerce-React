@@ -34,7 +34,7 @@ const ProductList = () => {
       <Container>
         <Row className="">
           {productsArr.map((product) => {
-           return  <Col className="col-6 col-md-4 col-xl-3 g-5">
+           return  <Col key={Math.random()} className="col-6 col-md-4 col-xl-3 g-5">
               <Card>
                 <Card.Img variant="top" src={product.imageUrl}></Card.Img>
                 <Card.Body className="d-flex  flex-column align-items-center ">
