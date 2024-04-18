@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from './components/Nav_Bar/NavBar';
 import ProductList from './components/Products/ProductList';
 import CartProducts from './components/Cart/CartProducts';
+import CartContextProvider from './store/CartContextProvider';
 function App() {
   const [showcart,updatedshowcart]= useState(false)
   const showcarthandler = ()=>{
@@ -13,12 +14,15 @@ console.log('yes')
     updatedshowcart(false)
   }
   return (
-    <div className=".body">
+    <CartContextProvider>
+      <div className=".body">
 
-   <NavBar onClick={showcarthandler} />
-   {showcart && <CartProducts onClick={hidecart}/>}
-   <ProductList/>
-    </div>
+<NavBar onClick={showcarthandler} />
+{showcart && <CartProducts onClick={hidecart}/>}
+<ProductList/>
+ </div>
+    </CartContextProvider>
+    
   );
 }
 
