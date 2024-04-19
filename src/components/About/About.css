@@ -1,0 +1,24 @@
+.about-section {
+    padding: 20px;
+    margin-top: 60px; /* Adjust this value based on your NavBar's height */
+  }
+  .about-section h1{
+    color: white;
+  }
+  
+  .about-heading {
+    
+    margin-bottom: 20px;
+  }
+  
+  .about-image {
+    width: 100%;
+    max-width: 500px; /* Adjust as needed */
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .about-text {
+    text-align: justify;
+    line-height: 1.6;
+  }

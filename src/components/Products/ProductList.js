@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Button, Card, Container ,Row,Col} from "react-bootstrap";
 import CartContext from "../../store/CartContext";
+import './ProductList.css'
 const ProductList = () => {
   const cartctx = useContext(CartContext)
   const productsArr = [
@@ -35,7 +36,7 @@ cartctx.additem(product)
   }
 
   return (
-    <div>
+    <div className="product-list">
       <Container>
         <Row className="">
           {productsArr.map((product) => {
