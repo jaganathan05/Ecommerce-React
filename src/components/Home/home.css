@@ -1,0 +1,27 @@
+.home-section {
+
+    margin-top:60px;
+}
+
+.tour-list {
+    list-style-type: none;
+    padding: 30px;
+    text-align: center;
+  }
+  
+  .tour-list li {
+    margin-bottom: 10px;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tour-list li span {
+    text-decoration: none;
+    color: #007bff; /* Link color */
+  }
+  
+  .tour-list li span:hover {
+    text-decoration: underline;
+  }

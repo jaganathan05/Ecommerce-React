@@ -6,6 +6,7 @@ import ProductList from "./components/Products/ProductList";
 import CartProducts from "./components/Cart/CartProducts";
 import CartContextProvider from "./store/CartContextProvider";
 import AboutPage from "./components/About/About";
+import Home from "./components/Home/home";
 function App() {
   const [showcart, updatedshowcart] = useState(false);
   const showcarthandler = () => {
@@ -45,6 +46,10 @@ function App() {
         </CartContextProvider>
       ),
     },
+    {
+      path: '/home',
+      element: <Home/>
+    }
   ]);
   return <RouterProvider router={router} />;
 }
