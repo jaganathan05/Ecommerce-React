@@ -7,7 +7,7 @@ const NavBar = (props) => {
   
   return (
       <Navbar bg='dark' variant="dark" expand='sm' fixed="top">
-        <Container>
+        <Container >
           <Navbar.Brand href="/">Jack Store</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav">
@@ -18,7 +18,7 @@ const NavBar = (props) => {
             <NavLink to="/contact" className="navlink">Contact</NavLink>
           </Nav>
           </Navbar.Collapse>
-          {props.showcart && <Button className="btn-primary btn-outline-light" onClick={props.onClick}>CART</Button>}
+          {props.showcart && <Button className="btn btn-primary btn-outline-light " onClick={props.onClick} >CART</Button>}
           
         </Container>
       </Navbar>

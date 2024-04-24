@@ -6,8 +6,9 @@ import CartProducts from "./components/Cart/CartProducts";
 import CartContextProvider from "./store/CartContextProvider";
 import AboutPage from "./components/About/About";
 import Home from "./components/Home/home";
-import { Route } from "react-router-dom";
+import { Route ,Redirect } from "react-router-dom";
 import Contactpage from "./components/Contact Page/ContactPage";
+import ProductDetails from "./components/Products/ProductDetails/ProductDetails";
 function App() {
   const [showcart, updatedshowcart] = useState(false);
   const showcarthandler = () => {
@@ -18,19 +19,10 @@ function App() {
     updatedshowcart(false);
   };
 
-  const mainpage = (
-    <CartContextProvider>
-      <div className=".body">
-        <NavBar onClick={showcarthandler} showcart={true} />
-        {showcart && <CartProducts onClick={hidecart} />}
-        <ProductList />
-      </div>
-    </CartContextProvider>
-  );
 
   const store = (
     <CartContextProvider>
-      <div className=".body">
+      <div >
         <NavBar onClick={showcarthandler} showcart={true} />
         {showcart && <CartProducts onClick={hidecart} />}
         <ProductList />
@@ -41,7 +33,7 @@ function App() {
   return (
     <div>
     <Route exact path="/">
-      {mainpage}
+      <Redirect to='/store'/>
     </Route>
     <Route path="/store">{store}</Route>
     <Route path="/home">
@@ -52,6 +44,9 @@ function App() {
     </Route>
     <Route path="/contact">
       <Contactpage/>
+    </Route>
+    <Route path="/Product/:ProductId">
+<ProductDetails/>
     </Route>
   </div>
   );

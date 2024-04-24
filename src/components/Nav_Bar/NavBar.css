@@ -1,18 +1,17 @@
 
 .navlink{
-    padding: 6px;
+    padding-right: 6px;
     text-decoration: none;
 }
 
-#navbar .navlink.active,
-#navbar .navlink.active:hover {
+ .navlink.active,
+ .navlink.active:hover {
     color: yellow; 
     font-weight: bold; 
     border-bottom: 4px solid yellow;
 }
 
-
-#navbar .navlink:hover {
+ .navlink:hover {
     color: rgb(20, 247, 255);
     text-decoration: none; 
     border-bottom: 4px solid rgb(11, 206, 255);

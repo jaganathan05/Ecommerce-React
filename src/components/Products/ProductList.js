@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Button, Card, Container ,Row,Col} from "react-bootstrap";
 import CartContext from "../../store/CartContext";
 import './ProductList.css'
+import { Link } from "react-router-dom/cjs/react-router-dom";
 const ProductList = () => {
   const cartctx = useContext(CartContext)
   const productsArr = [
@@ -42,11 +43,13 @@ cartctx.additem(product)
           {productsArr.map((product) => {
            return  <Col key={product.id} className="col-6 col-md-4 col-xl-3 g-5">
               <Card>
+              <Link to={`/Product/${product.id}`}>
                 <Card.Img variant="top" src={product.imageUrl}></Card.Img>
+                </Link>
                 <Card.Body className="d-flex  flex-column align-items-center ">
                   <Card.Title>{product.title}</Card.Title>
                   <Card.Text>{product.price}</Card.Text>
-                  <Button className=" btn-light btn-outline-danger " onClick={addtocart.bind(null,product)}>ADD TO CART</Button>
+                  <Button className=" btn-light btn-outline-danger btn-sm" onClick={addtocart.bind(null,product)}>ADD TO CART</Button>
                 </Card.Body>
               </Card>
             </Col>;

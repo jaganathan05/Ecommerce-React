@@ -3,7 +3,8 @@ import CartContext from "./CartContext";
 
 function CartContextProvider (props){
     const [cartitems , updatedcartitems] = useState([])
-    const [totalamount , updatedtotal] = useState(0)
+    const [totalamount , updatedtotal] = useState(0) 
+   
 
     const additemtocart =(product)=>{
 
