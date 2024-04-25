@@ -9,6 +9,7 @@ import Home from "./components/Home/home";
 import { Route ,Redirect } from "react-router-dom";
 import Contactpage from "./components/Contact Page/ContactPage";
 import ProductDetails from "./components/Products/ProductDetails/ProductDetails";
+import Signup from "./components/Login/Signup";
 function App() {
   const [showcart, updatedshowcart] = useState(false);
   const showcarthandler = () => {
@@ -47,6 +48,9 @@ function App() {
     </Route>
     <Route path="/Product/:ProductId">
 <ProductDetails/>
+    </Route>
+    <Route path='/signup'>
+<Signup/>
     </Route>
   </div>
   );
