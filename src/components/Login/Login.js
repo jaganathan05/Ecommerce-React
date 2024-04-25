@@ -1,9 +1,11 @@
-import React ,{useRef, useState} from "react";
+import React ,{useContext, useRef, useState} from "react";
 import "./Signup.css";
 import { Form, FormGroup } from "react-bootstrap";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import AuthContext from "../../store/Auth-Context";
 function Login() { 
+  const history = useHistory()
+    const Authctx = useContext(AuthContext)
     const [senddata,updatesenddata]=useState(false)
 
     const emailref = useRef();
@@ -31,9 +33,12 @@ function Login() {
         })
 
         if(response.ok){
-            const data = response.json()
-            console.log(data)
+            const data = await response.json()
+            const token = data.idToken;
+
+            Authctx.loginhandler(token) 
             alert('login successfully')
+            history.push('/store')
             updatesenddata(false)
             emailref.current.value=''
             passwordref.current.value=''

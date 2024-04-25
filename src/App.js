@@ -1,43 +1,35 @@
-import React, { useState } from "react";
+// React Libraries
+
+import React from "react";
+import { Route ,Redirect } from "react-router-dom";
 import "./App.css";
-import NavBar from "./components/Nav_Bar/NavBar";
-import ProductList from "./components/Products/ProductList";
-import CartProducts from "./components/Cart/CartProducts";
-import CartContextProvider from "./store/CartContextProvider";
+
+// Pages 
 import AboutPage from "./components/About/About";
 import Home from "./components/Home/home";
-import { Route ,Redirect } from "react-router-dom";
 import Contactpage from "./components/Contact Page/ContactPage";
 import ProductDetails from "./components/Products/ProductDetails/ProductDetails";
 import Signup from "./components/Login/Signup";
 import Login from "./components/Login/Login";
+import Store from "./components/Store_Page/Store";
+import { AuthContextProvider } from "./store/Auth-Context";
+
+
 function App() {
-  const [showcart, updatedshowcart] = useState(false);
-  const showcarthandler = () => {
-    updatedshowcart(true);
-    console.log("yes");
-  };
-  const hidecart = () => {
-    updatedshowcart(false);
-  };
+ 
 
 
-  const store = (
-    <CartContextProvider>
-      <div >
-        <NavBar onClick={showcarthandler} showcart={true} />
-        {showcart && <CartProducts onClick={hidecart} />}
-        <ProductList />
-      </div>
-    </CartContextProvider>
-  );
+  
 
   return (
-    <div>
+    <AuthContextProvider> 
+      <div>
     <Route exact path="/">
       <Redirect to='/store'/>
     </Route>
-    <Route path="/store">{store}</Route>
+    <Route path="/store">
+      <Store/>
+    </Route>
     <Route path="/home">
       <Home />
     </Route>
@@ -57,6 +49,8 @@ function App() {
       <Login/>
     </Route>
   </div>
+       </AuthContextProvider>
+    
   );
 }
 export default App;
