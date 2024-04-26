@@ -6,14 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 import { AuthContextProvider } from './store/Auth-Context';
 import { BrowserRouter } from 'react-router-dom';
+import CartContextProvider from './store/CartContextProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AuthContextProvider>
-    <BrowserRouter>
+    <AuthContextProvider> 
+      <CartContextProvider>
+      <BrowserRouter>
     <App />
     </BrowserRouter>
+    
+      </CartContextProvider>
     
     </AuthContextProvider>
     

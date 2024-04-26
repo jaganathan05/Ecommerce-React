@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Button, Card, Container ,Row,Col} from "react-bootstrap";
-import CartContext from "../../store/CartContext";
 import './ProductList.css'
 import { Link } from "react-router-dom/cjs/react-router-dom";
 const ProductList = () => {
-  const cartctx = useContext(CartContext)
   const productsArr = [
     {id: 'sq1',
       title: "Colors",
@@ -32,8 +30,19 @@ const ProductList = () => {
     },
   ];
 
-  const addtocart = (product)=>{
-cartctx.additem(product)
+  const addtocart = async (product)=>{
+const Email = localStorage.getItem('Email')
+const response = await fetch (`https://crudcrud.com/api/eb87f51010514ac189c3a928f192666f/${Email}`,{
+  method: 'POST',
+  headers: {
+    'Content-Type':'application/json'
+  },
+  body: JSON.stringify(product)
+})
+
+if(response.ok){
+  alert('success')
+}
   }
 
   return (

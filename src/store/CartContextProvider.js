@@ -1,24 +1,28 @@
 import {  useState } from "react";
 import CartContext from "./CartContext";
 
-function CartContextProvider (props){
+ function CartContextProvider (props){
+    
+
     const [cartitems , updatedcartitems] = useState([])
     const [totalamount , updatedtotal] = useState(0) 
    
 
-    const additemtocart =(product)=>{
+    const additemtocart =(products)=>{
 
-        if (cartitems.some(item => item.id === product.id)) {
-            return; 
-          }
-      
-          updatedcartitems((prevItems) => [...prevItems, product]);
-          updatedtotal((prevTotalAmount) => prevTotalAmount + Number(product.price));
+        console.log(products)
+          updatedcartitems([...products]);
+          let  total_amount  = 0; 
+          products.forEach(product => {
+            total_amount +=  Number(product.price)
+            
+          });
+          updatedtotal(total_amount);
     }
 
     const removeitemhandler = (product)=>{
 updatedcartitems((previtems)=>{
-    const filtereditems = previtems.filter((prod)=> prod.id !== product.id)
+    const filtereditems = previtems.filter((prod)=> prod._id !== product._id)
     
     return [...filtereditems]
 })
@@ -33,6 +37,8 @@ updatedtotal(prevamount=> prevamount - Number(product.price))
     additem : additemtocart
         
 }
+
+console.log(Cartcontext)
 
 return <CartContext.Provider value={Cartcontext}>{props.children}</CartContext.Provider>
 }

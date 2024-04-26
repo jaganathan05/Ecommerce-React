@@ -7,11 +7,24 @@ function CartProducts(props) {
   const cartctx = useContext(CartContext);
   const CartItems = cartctx.cartitems;
 
-  const removecartitem=(product)=>{
-    cartctx.removeitem(product)
+  console.log(CartItems)
+
+  const removecartitem= async (product)=>{
+    console.log(product)
+    const Email = localStorage.getItem('Email')
+const response = await fetch (`https://crudcrud.com/api/eb87f51010514ac189c3a928f192666f/${Email}/${product._id}`,{
+  method: 'DELETE',
+})
+
+if(response.ok){
+  cartctx.removeitem(product)
+  alert('product deleted')
+  
+  
+}
   }
 
-  return <div id="box">
+  return <div id="box3">
   <Button
     id="closecartbtn"
     className="btn-close btn-primary "
@@ -29,7 +42,6 @@ function CartProducts(props) {
       <h5>Quantity</h5>
     </Col>
     <Col>
-      <span> </span>
     </Col>
   </Row>
   <div>
@@ -46,7 +58,7 @@ function CartProducts(props) {
             <h5>{1}</h5>
           </Col>
           <Col>
-            <Button className="btn btn-danger btn-outline-warning" onClick={removecartitem.bind(null,product)}>
+            <Button className="btn btn-danger btn-outline-warning btn-sm" onClick={removecartitem.bind(null,product)}>
               remove
             </Button>
           </Col>

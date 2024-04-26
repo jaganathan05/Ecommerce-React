@@ -8,6 +8,12 @@ function Login() {
     const Authctx = useContext(AuthContext)
     const [senddata,updatesenddata]=useState(false)
 
+    function cleanEmail(email) {
+      return email.replace(/[.@]/g, '');
+  }
+  
+  
+
     const emailref = useRef();
     const passwordref = useRef();
 
@@ -34,9 +40,13 @@ function Login() {
 
         if(response.ok){
             const data = await response.json()
+            console.log(data)
             const token = data.idToken;
 
             await Authctx.loginhandler(token) 
+            const emailInput = data.email;
+            const cleanedEmail = cleanEmail(emailInput);
+            localStorage.setItem('Email',cleanedEmail)
             alert('login successfully')
             history.replace('/store')
             updatesenddata(false)

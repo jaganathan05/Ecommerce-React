@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Agbalumo&family=Belanosima:wght@400;600;700&family=Jersey+25&display=swap');
-#box{
+#box3{
   position: absolute;
   top: 90px; 
   right: 20px;
@@ -19,25 +19,25 @@
   right: 10px;
 }
 
-h3{
+#box3 h3{
 font-family: "Agbalumo", system-ui;
   
   font-style: normal;
 }
-h5{
+#box3 h5{
     font-family: 'Playfair Display', serif;
   
 }
 
 @media (min-width: 768px) {
-#box{
+#box3{
     margin-left: 60% ;
     
 }    
 }
 
 @media (max-width: 768px) {
-    #box{
+    #box3{
         top:150px;
         width: 250px;
         margin-left: 100px;
