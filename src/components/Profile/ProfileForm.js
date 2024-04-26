@@ -3,9 +3,11 @@ import NavBar from "../Nav_Bar/NavBar";
 import { Form, FormGroup } from "react-bootstrap";
 import './ProfileForm.css'
 import AuthContext from "../../store/Auth-Context";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfileForm() { 
   const Authctx = useContext(AuthContext);
+  const histroy = useHistory()
 
     const [senddata,updatesenddata]=useState(false)
     const passwordref = useRef();
@@ -36,6 +38,8 @@ function ProfileForm() {
               passwordref.current.value=''
               const data =await response.json()
               Authctx.loginhandler(data.idToken)
+              histroy.push('/')
+
             }
 
     }
