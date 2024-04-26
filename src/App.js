@@ -22,6 +22,13 @@ function App() {
   const Authctx = useContext(AuthContext);
   console.log(Authctx.Login_Status);
 
+  setTimeout(()=>{
+console.log('token removed')
+localStorage.removeItem('token')
+
+
+  },300000)
+
  
 
 
