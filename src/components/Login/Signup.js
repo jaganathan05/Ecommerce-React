@@ -1,5 +1,5 @@
 import React ,{useRef, useState} from "react";
-import "./Signup.css";
+import './Signup.css'
 import { Form, FormGroup } from "react-bootstrap";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -44,36 +44,37 @@ function Signup() {
         }
 
     }
-  return (
-    <div className="box">
-      <h2>SIGH UP</h2>
-      <Form>
-        <FormGroup controlId="email">
-          <Form.Label className="lable">Enter Your Name</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter your Email"
-            ref={emailref}
-            required
-          ></Form.Control>
-        </FormGroup>
-        <FormGroup controlId="password">
-          <Form.Label className="lable">Enter Your Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Enter your Password" 
-            ref={passwordref}
-            required
-          ></Form.Control>
-        </FormGroup>
-        {senddata && <p className="notification">Sending Request  ....</p>}
-        {!senddata && <button className="btn1" type='butt' onClick={submitformhandler}>Submit</button> }
-        <br/>
-        <Link className="link" to="/login">
-          Login to Existing Account !
-        </Link>
-      </Form>
-    </div>
+  return (<div className="box">
+  <h2>SIGH UP</h2>
+  <Form>
+    <FormGroup controlId="email">
+      <Form.Label className="lable">Enter Your Name</Form.Label>
+      <Form.Control
+        type="email"
+        placeholder="Enter your Email"
+        ref={emailref}
+        required
+      ></Form.Control>
+    </FormGroup>
+    <FormGroup controlId="password">
+      <Form.Label className="lable">Enter Your Password</Form.Label>
+      <Form.Control
+        type="password"
+        placeholder="Enter your Password" 
+        ref={passwordref}
+        required
+      ></Form.Control>
+    </FormGroup>
+    {senddata && <p className="notification">Sending Request  ....</p>}
+    {!senddata && <button className="btn1" type='butt' onClick={submitformhandler}>Submit</button> }
+    <br/>
+    <Link className="link" to="/login">
+      Login to Existing Account !
+    </Link>
+  </Form>
+</div> 
+    
+    
   );
   }
 export default Signup;

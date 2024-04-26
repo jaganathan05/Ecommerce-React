@@ -13,6 +13,7 @@ import Signup from "./components/Login/Signup";
 import Login from "./components/Login/Login";
 import Store from "./components/Store_Page/Store";
 import { AuthContextProvider } from "./store/Auth-Context";
+import ProfileForm from "./components/Profile/ProfileForm";
 
 
 function App() {
@@ -47,6 +48,9 @@ function App() {
     </Route>
     <Route path='/login'>
       <Login/>
+    </Route>
+    <Route path='/profile' >
+      <ProfileForm/>
     </Route>
   </div>
        </AuthContextProvider>
