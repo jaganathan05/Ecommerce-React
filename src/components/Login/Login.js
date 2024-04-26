@@ -36,9 +36,9 @@ function Login() {
             const data = await response.json()
             const token = data.idToken;
 
-            Authctx.loginhandler(token) 
+            await Authctx.loginhandler(token) 
             alert('login successfully')
-            history.push('/store')
+            history.replace('/store')
             updatesenddata(false)
             emailref.current.value=''
             passwordref.current.value=''

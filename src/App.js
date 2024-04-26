@@ -1,7 +1,7 @@
 // React Libraries
 
-import React from "react";
-import { Route ,Redirect } from "react-router-dom";
+import React, { useContext } from "react";
+import { Route  } from "react-router-dom";
 import "./App.css";
 
 // Pages 
@@ -12,48 +12,57 @@ import ProductDetails from "./components/Products/ProductDetails/ProductDetails"
 import Signup from "./components/Login/Signup";
 import Login from "./components/Login/Login";
 import Store from "./components/Store_Page/Store";
-import { AuthContextProvider } from "./store/Auth-Context";
 import ProfileForm from "./components/Profile/ProfileForm";
+import AuthContext from "./store/Auth-Context";
+import { Redirect, Switch } from "react-router-dom/cjs/react-router-dom.min";
 
 
 function App() {
+
+  const Authctx = useContext(AuthContext);
+  console.log(Authctx.Login_Status);
+
  
 
 
-  
-
   return (
-    <AuthContextProvider> 
-      <div>
-    <Route exact path="/">
-      <Redirect to='/store'/>
-    </Route>
-    <Route path="/store">
-      <Store/>
-    </Route>
-    <Route path="/home">
-      <Home />
-    </Route>
-    <Route path="/about">
-      <AboutPage />
-    </Route>
-    <Route path="/contact">
-      <Contactpage/>
-    </Route>
-    <Route path="/Product/:ProductId">
-<ProductDetails/>
-    </Route>
-    <Route path='/signup'>
-<Signup/>
-    </Route>
-    <Route path='/login'>
-      <Login/>
-    </Route>
-    <Route path='/profile' >
-      <ProfileForm/>
-    </Route>
-  </div>
-       </AuthContextProvider>
+      <Switch>
+        {Authctx.Login_Status && <Route path="/store">
+          <Store/>
+        </Route>}
+        {Authctx.Login_Status && <Route path="/home">
+          <Home />
+        </Route>}
+        {Authctx.Login_Status && <Route path="/about">
+          <AboutPage />
+        </Route>}
+        {Authctx.Login_Status && <Route path="/contact">
+          <Contactpage/>
+        </Route>}
+        {Authctx.Login_Status && <Route path="/Product/:ProductId">
+          <ProductDetails/>
+        </Route>}
+        {!Authctx.Login_Status && <Route path='/signup'>
+          <Signup/>
+        </Route>}
+        {!Authctx.Login_Status && <Route path='/login'>
+          <Login/>
+        </Route>}
+        {Authctx.Login_Status && <Route path='/profile'>
+          <ProfileForm/>
+        </Route>}
+        {!Authctx.Login_Status && <Route path='*' >
+          <Redirect to='/login'></Redirect>
+        </Route>
+
+        }
+
+{Authctx.Login_Status && <Route path='*' >
+          <Redirect to='/store'></Redirect>
+        </Route>
+
+        }
+      </Switch>
     
   );
 }

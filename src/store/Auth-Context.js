@@ -15,17 +15,20 @@ const AuthContext = React.createContext({
 })
 
 export const AuthContextProvider = (props)=>{
+    const inititialvalue = localStorage.getItem('token')
 
-    const [token ,settoken] = useState(null)
-    const [status , updatedstatus] = useState(false)
+    const [token ,settoken] = useState(inititialvalue)
+    const [status , updatedstatus] = useState(!!inititialvalue)
     const LoginHandler = (Token)=>{
         settoken(Token)
         updatedstatus(true)
+        localStorage.setItem('token', Token)
     }
 
     const LogoutHandler = ()=>{
         settoken(null)
         updatedstatus(false)
+        localStorage.removeItem('token')
     }
 
     const contextvalue = {
@@ -34,6 +37,8 @@ export const AuthContextProvider = (props)=>{
         loginhandler : LoginHandler ,
         logouthandler : LogoutHandler 
     }
+
+    console.log(contextvalue)
 
 
     return <AuthContext.Provider value={contextvalue}>{props.children}</AuthContext.Provider>
